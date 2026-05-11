@@ -1,4 +1,4 @@
-# Commercial Web Counter SaaS
+# Commercial-Web-Counter
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![PHP](https://img.shields.io/badge/PHP-7.4%2B-777BB4)](https://www.php.net/)
@@ -12,11 +12,19 @@
 
 > 当前版本定位为可运行的 MVP。正式用于生产环境前，请根据业务需要补充安全、风控、隐私合规和性能优化能力。
 
+## 仓库地址
+
+```bash
+git clone https://github.com/dwkejiPeng/Commercial-Web-Counter.git
+cd Commercial-Web-Counter
+```
+
 ---
 
 ## 目录
 
 - [功能特性](#功能特性)
+- [仓库地址](#仓库地址)
 - [技术栈](#技术栈)
 - [运行环境](#运行环境)
 - [目录结构](#目录结构)
@@ -101,7 +109,7 @@ php -m | grep -E "pdo_mysql|openssl|json|mbstring"
 ## 目录结构
 
 ```text
-commercial-web-counter-saas/
+Commercial-Web-Counter/
 ├── app/
 │   ├── bootstrap.php
 │   ├── config.sample.php
@@ -148,7 +156,7 @@ commercial-web-counter-saas/
 将项目上传到服务器目录，例如：
 
 ```bash
-/var/www/commercial-web-counter-saas
+/var/www/Commercial-Web-Counter
 ```
 
 ### 2. 配置 Web 根目录
@@ -156,7 +164,7 @@ commercial-web-counter-saas/
 Nginx 的 `root` 必须指向项目的 `public` 目录：
 
 ```nginx
-root /var/www/commercial-web-counter-saas/public;
+root /var/www/Commercial-Web-Counter/public;
 ```
 
 ### 3. 运行安装向导
@@ -186,7 +194,7 @@ https://counter.example.com/install/
 安装成功后，请立即删除安装目录：
 
 ```bash
-rm -rf /var/www/commercial-web-counter-saas/public/install
+rm -rf /var/www/Commercial-Web-Counter/public/install
 ```
 
 ---
@@ -200,7 +208,7 @@ server {
     listen 80;
     server_name counter.example.com;
 
-    root /var/www/commercial-web-counter-saas/public;
+    root /var/www/Commercial-Web-Counter/public;
     index index.php index.html;
 
     location / {
@@ -352,13 +360,13 @@ Content-Type: application/json
 保留最近 90 天访问日志：
 
 ```bash
-php /var/www/commercial-web-counter-saas/tools_cleanup_visit_logs.php 90
+php /var/www/Commercial-Web-Counter/tools_cleanup_visit_logs.php 90
 ```
 
 Cron 示例：
 
 ```cron
-0 3 * * * php /var/www/commercial-web-counter-saas/tools_cleanup_visit_logs.php 90 >/dev/null 2>&1
+0 3 * * * php /var/www/Commercial-Web-Counter/tools_cleanup_visit_logs.php 90 >/dev/null 2>&1
 ```
 
 ---
