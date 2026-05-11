@@ -1,4 +1,4 @@
-# Commercial Web Counter SaaS
+# Commercial Web Counter
 
 这是按商业项目流程重构的多租户网页访问计数系统，技术栈为：
 
@@ -40,7 +40,7 @@
 ## 目录结构
 
 ```text
-commercial-web-counter-saas/
+commercial-web-counter/
 ├── app/
 │   ├── bootstrap.php
 │   ├── config.sample.php
@@ -84,7 +84,7 @@ commercial-web-counter-saas/
 上传到：
 
 ```bash
-/var/www/commercial-web-counter-saas
+/var/www/commercial-web-counter
 ```
 
 ### 2. 配置 Nginx
@@ -92,7 +92,7 @@ commercial-web-counter-saas/
 重点：Nginx root 必须指向 `public` 目录：
 
 ```nginx
-root /var/www/commercial-web-counter-saas/public;
+root /var/www/commercial-web-counter/public;
 ```
 
 参考 `nginx.example.conf`。
@@ -137,7 +137,7 @@ https://counter.example.com/install/
 安装成功后务必删除：
 
 ```bash
-rm -rf /var/www/commercial-web-counter-saas/public/install
+rm -rf /var/www/commercial-web-counter/public/install
 ```
 
 ## 用户接入流程
@@ -240,27 +240,11 @@ Content-Type: application/json
 保留最近 90 天访问日志：
 
 ```bash
-php /var/www/commercial-web-counter-saas/tools_cleanup_visit_logs.php 90
+php /var/www/commercial-web-counter/tools_cleanup_visit_logs.php 90
 ```
 
 Cron 示例：
 
 ```cron
-0 3 * * * php /var/www/commercial-web-counter-saas/tools_cleanup_visit_logs.php 90 >/dev/null 2>&1
+0 3 * * * php /var/www/commercial-web-counter/tools_cleanup_visit_logs.php 90 >/dev/null 2>&1
 ```
-
-## 后续商业化可扩展方向
-
-当前版本是可运行的 MVP 源码。商业化建议继续增加：
-
-- 套餐与计费
-- 用户站点数量限制
-- API 请求频控
-- Redis 缓冲计数
-- GeoIP 地域统计
-- 设备/浏览器解析
-- 图表可视化
-- CSV 导出
-- 操作审计日志
-- 客户端 token 签名
-- 管理员二次验证
